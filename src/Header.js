@@ -1,18 +1,37 @@
-import './index.css'
+import "./index.css";
+
+import { useState } from "react";
 
 export default function Header() {
-    return (
-        <header class="top-header">
-        <nav class="nav">
-            <button class="nav-button" id="nav-button">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="nav-links">
-              <li><a href="#aboutme">About Me</a></li>
-              <li><a href="#portfolio">Portfolio</a></li>
-              <li><a href="#instagram">Instagram</a></li>
-            </ul>
-        </nav>
-      </header>
-    )
+  const [showLinks, setShowLinks] = useState(false);
+
+  return (
+    <header className="top-header">
+      <nav className="nav">
+        <button
+          onClick={() => setShowLinks((prev) => !prev)}
+          className="nav-button"
+          id="nav-button"
+        >
+          <i className="fas fa-bars"></i>
+        </button>
+
+        {showLinks && (
+          <ul className="nav-links" id="nav-links">
+            <li>
+              <a href="#aboutme">About Me</a>
+            </li>
+
+            <li>
+              <a href="#portfolio">Portfolio</a>
+            </li>
+
+            <li>
+              <a href="#instagram">Instagram</a>
+            </li>
+          </ul>
+        )}
+      </nav>
+    </header>
+  );
 }
